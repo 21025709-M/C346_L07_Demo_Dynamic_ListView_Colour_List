@@ -8,12 +8,13 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
 
-    EditText etElement;
+    EditText etElement, etIndexElement;
     Button btnAdd;
     ListView lvColor;
     ArrayList<String> alColours;
@@ -25,6 +26,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         etElement = findViewById(R.id.editTextColor);
+        etIndexElement = findViewById(R.id.editTextIndex);
         btnAdd = findViewById(R.id.buttonAddItem);
         lvColor = findViewById(R.id.listViewColour);
 
@@ -39,8 +41,15 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 String colour = etElement.getText().toString(); //extraction
-                alColours.add(colour);                          //insertion
-                aaColour.notifyDataSetChanged();                //Listview refresh
+//                if (colour.length() != 0){
+                    alColours.add(colour);                          //insertion
+                    aaColour.notifyDataSetChanged();                //Listview refresh
+//                } else {
+//                    Toast.makeText(getActivity(), "Field is empty, Enter a Colour!",
+//                            Toast.LENGTH_LONG).show();
+//                }
+
+
             }
         });
     }

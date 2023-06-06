@@ -18,6 +18,16 @@
         android:hint="Enter a Colour"
         android:paddingBottom="16dp"/>
 
+    <EditText
+        android:id="@+id/editTextIndex"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="Enter a Position Number"
+        android:inputType="text"
+        android:paddingBottom="16dp"
+        android:textSize="16dp" />
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
