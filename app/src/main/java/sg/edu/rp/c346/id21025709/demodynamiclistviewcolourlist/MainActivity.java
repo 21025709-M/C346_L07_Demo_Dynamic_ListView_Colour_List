@@ -1,9 +1,10 @@
 package sg.edu.rp.c346.id21025709.demodynamiclistviewcolourlist;
 
 import androidx.appcompat.app.AppCompatActivity;
-
+;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
@@ -30,7 +31,7 @@ public class MainActivity extends AppCompatActivity {
         btnAdd = findViewById(R.id.buttonAddItem);
         lvColor = findViewById(R.id.listViewColour);
 
-        alColours = new ArrayList<>();
+        alColours = new ArrayList<String>();
         alColours.add("Red");
         alColours.add("Orange");
 
@@ -41,16 +42,22 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 String colour = etElement.getText().toString(); //extraction
-//                if (colour.length() != 0){
-                    alColours.add(colour);                          //insertion
-                    aaColour.notifyDataSetChanged();                //Listview refresh
-//                } else {
-//                    Toast.makeText(getActivity(), "Field is empty, Enter a Colour!",
-//                            Toast.LENGTH_LONG).show();
-//                }
-
+//                alColours.add(colour);                          //insertion
+                int pos = Integer.parseInt(etIndexElement.getText().toString());
+                alColours.add(pos, colour);
+                aaColour.notifyDataSetChanged();                //Listview refresh
 
             }
         });
+
+        lvColor.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long id) {
+
+                String Colour = alColours.get(i);
+                Toast.makeText(MainActivity.this, Colour, Toast.LENGTH_SHORT).show();
+            }
+        });
+
     }
 }
